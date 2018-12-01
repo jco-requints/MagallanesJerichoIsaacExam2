@@ -29,12 +29,6 @@ public class MainActivity extends AppCompatActivity {
         ePass = findViewById(R.id.password); //Exam2 var
         eExam1= findViewById(R.id.exam1); //Exam1 var
         eAverage = findViewById(R.id.average); //Average var
-//        int num1 = Integer.parseInt(String.valueOf(eExam1));
-//        int num2 = Integer.parseInt(String.valueOf(ePass));
-//        double calculate = num1 + num2/2;
-//        double result = calculate;
-//
-//        eAverage.setText(" " + result);
 
     }
 
@@ -69,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         String pass = ePass.getText().toString();
         String uExam1 = eExam1.getText().toString();
         String uAverage = eAverage.getText().toString();
+        int num1 = Integer.parseInt(uExam1);
+        int num2 = Integer.parseInt(String.valueOf(pass));
+        double calculate = (num1 + num2) /2;
+        double result = calculate;
+        String uresult = Double.toString(result);
+        eAverage.setText(" " + result);
         FileOutputStream fos = null;
         try {
             fos = openFileOutput("Data2.txt",MODE_PRIVATE);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             fos.write(uLname.getBytes());
             fos.write(uExam1.getBytes());
             fos.write(pass.getBytes());
-            fos.write(uAverage.getBytes());
+            fos.write(uresult.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
